@@ -1,7 +1,7 @@
 class User < ApplicationRecord
-  has_many :comments
-  has_many :posts
-  
+  has_many :comments, through: :posts, dependent: :destroy
+  has_many :posts, dependent: :destroy
+
   validates :username,
             presence: true,
             length: { minimum: 6, maximum: 20 },
